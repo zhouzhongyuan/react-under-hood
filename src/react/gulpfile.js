@@ -189,6 +189,7 @@ gulp.task('flow', getTask('flow'));
 gulp.task('version-check', getTask('version-check'));
 
 gulp.task('react:clean', function() {
+  console.log(paths.react.lib)
   return del([
     paths.react.lib,
     paths.reactDOM.lib,
@@ -196,6 +197,24 @@ gulp.task('react:clean', function() {
     paths.reactTestRenderer.lib,
   ]);
 });
+
+gulp.task('react:clean:zzydev', function() {
+  console.log(paths.react.lib)
+  return del([
+    'build/node_modules',
+    'build/react.js',
+    'build/react.min.js',
+    'build/react-dom.js',
+    'build/react-dom.min.js',
+    'build/react-dom-server.js',
+    'build/react-dom-server.min.js',
+    'build/react-with-addons.js',
+    'build/react-with-addons.min.js',
+    'build/packages/react.tgz',
+    'build/packages/react-dom.tgz',
+  ]);
+});
+
 
 gulp.task('react:modules', function() {
   return merge(
@@ -211,21 +230,7 @@ gulp.task('react:modules', function() {
       .pipe(babel(babelOptsReactDOM))
       .pipe(stripProvidesModule())
       .pipe(flatten())
-      .pipe(gulp.dest(paths.reactDOM.lib)),
-
-    gulp
-      .src(paths.reactNative.src)
-      .pipe(babel(babelOptsReactNative))
-      .pipe(stripProvidesModule())
-      .pipe(flatten())
-      .pipe(gulp.dest(paths.reactNative.lib)),
-
-    gulp
-      .src(paths.reactTestRenderer.src)
-      .pipe(stripProvidesModule())
-      .pipe(babel(babelOptsReactTestRenderer))
-      .pipe(flatten())
-      .pipe(gulp.dest(paths.reactTestRenderer.lib))
+      .pipe(gulp.dest(paths.reactDOM.lib))
   );
 });
 

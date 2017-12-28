@@ -66,6 +66,10 @@ module.exports = function(grunt) {
     // Use gulp here.
     spawnGulp(['react:clean'], null, this.async());
   });
+  grunt.registerTask('delete-zzydev-unused', function() {
+    // Use gulp here.
+    spawnGulp(['react:clean:zzydev'], null, this.async());
+  });
 
   // Our own browserify-based tasks to build a single JS file build.
   grunt.registerMultiTask('browserify', require('./grunt/tasks/browserify'));
@@ -172,19 +176,20 @@ module.exports = function(grunt) {
     'browserify:domMin',
     'browserify:domServer',
     'browserify:domServerMin',
-    'browserify:domFiber',
-    'browserify:domFiberMin',
+    // 'browserify:domFiber',
+    // 'browserify:domFiberMin',
     'npm-react:release',
     'npm-react:pack',
     'npm-react-dom:release',
     'npm-react-dom:pack',
-    'npm-react-native:release',
-    'npm-react-native:pack',
-    'npm-react-addons:release',
-    'npm-react-addons:pack',
-    'npm-react-test:release',
-    'npm-react-test:pack',
-    'compare_size',
+    // 'npm-react-native:release',
+    // 'npm-react-native:pack',
+    // 'npm-react-addons:release',
+    // 'npm-react-addons:pack',
+    // 'npm-react-test:release',
+    // 'npm-react-test:pack',
+    // 'compare_size',
+    'delete-zzydev-unused',
   ]);
 
   // Automate the release!
