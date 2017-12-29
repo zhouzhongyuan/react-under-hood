@@ -16,6 +16,7 @@ git reset --hard 03464f0
 ```bash
 rm -rf src/react/.git src/react/docs src/react/examples
 du -h --max-depth=1 src/react/
+find . -name __tests__ -type d -print0|xargs -0 rm -r --
 ```
 188Mb->5Mb
 
@@ -24,6 +25,12 @@ cd src/react
 npm install //(node@6, node@8不行)
 npm run build 
 ```
+
+
+```bash
+gulp react:modules
+```
+> 打开 gulpfile.js 文件搜索react:modules这个Task，在这个任务中FB解决了全局系统依赖的问题。src 目录下的源文件会被编译成扁平化的结构，这也意味着所有的文件都在同一级，所以你可以在 build 之后的文件中看到路径被转化成了相对路径。
 
 eslint
 ```bash

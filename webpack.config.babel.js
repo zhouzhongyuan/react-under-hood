@@ -33,7 +33,9 @@ export default {
     resolve: {
         alias:{
             react: path.resolve(__dirname, 'src/react/build/packages/react'),
-            ReactDOM: path.resolve(__dirname, 'src/react/build/packages/react-dom')
+            ReactDOM: path.resolve(__dirname, 'src/react/build/packages/react-dom'),
+            // react: path.resolve(__dirname, 'src/react/build/node_modules/react/lib/React.js'),
+            // ReactDOM: path.resolve(__dirname, 'src/react/build/node_modules/react-dom/lib/ReactDOM.js'),
         }
     }
 };

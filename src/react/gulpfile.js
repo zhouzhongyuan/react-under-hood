@@ -201,7 +201,7 @@ gulp.task('react:clean', function() {
 gulp.task('react:clean:zzydev', function() {
   console.log(paths.react.lib)
   return del([
-    'build/node_modules',
+    // 'build/node_modules',
     'build/react.js',
     'build/react.min.js',
     'build/react-dom.js',
