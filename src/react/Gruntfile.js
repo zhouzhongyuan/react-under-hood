@@ -165,31 +165,11 @@ module.exports = function(grunt) {
   // Optimized build task that does all of our builds. The subtasks will be run
   // in order so we can take advantage of that and only run build-modules once.
   grunt.registerTask('build', [
-    'delete-build-modules',
+    'delete-build-modules', // 清理build文件夹
     'build-modules',
-    'version-check',
-    'browserify:basic',
-    'browserify:addons',
-    'browserify:min',
-    'browserify:addonsMin',
-    'browserify:dom',
-    'browserify:domMin',
-    'browserify:domServer',
-    'browserify:domServerMin',
-    // 'browserify:domFiber',
-    // 'browserify:domFiberMin',
     'npm-react:release',
-    'npm-react:pack',
     'npm-react-dom:release',
-    'npm-react-dom:pack',
-    // 'npm-react-native:release',
-    // 'npm-react-native:pack',
-    // 'npm-react-addons:release',
-    // 'npm-react-addons:pack',
-    // 'npm-react-test:release',
-    // 'npm-react-test:pack',
-    // 'compare_size',
-    'delete-zzydev-unused',
+    'delete-zzydev-unused',// 清理与调试无关的文件
   ]);
 
   // Automate the release!

@@ -7,13 +7,6 @@ var src = 'packages/react/';
 var dest = 'build/packages/react/';
 var modSrc = 'build/node_modules/react/lib';
 var lib = dest + 'lib/';
-var dist = dest + 'dist/';
-var distFiles = [
-  'react.js',
-  'react.min.js',
-  'react-with-addons.js',
-  'react-with-addons.min.js',
-];
 
 function buildRelease() {
   // delete build/react-core for fresh start
@@ -39,12 +32,6 @@ function buildRelease() {
     } else {
       grunt.file.copy(mappingSrc, mappingDest);
     }
-  });
-
-  // Make built source available inside npm package
-  grunt.file.mkdir(dist);
-  distFiles.forEach(function(file) {
-    grunt.file.copy('build/' + file, dist + file);
   });
 
   // modify build/react-core/package.json to set version ##
